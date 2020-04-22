@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fund">
+	<select id="likeList" resultType="com.example.test.model.fund.dto.FundDTO">
+		select A.* from (select bno,project_name,p_division,s_division,title,max_fund,end_date,company_name,unit,min_fund,now_fund, support,
+		(end_date-sysdate) now_date, start_date,progress,viewcnt, good, approve, title_img,ceil(start_date-sysdate) open_date
+		from fund order by good desc) A 
+		where approve=1 and open_date &gt; 0 and rownum &lt; 6
+	</select>
+	<select id="viewcntList" resultType="com.example.test.model.fund.dto.FundDTO">
+		select A.* from (select bno,project_name,p_division,s_division,title,max_fund,end_date,company_name,unit,min_fund,now_fund, support,
+		(end_date-sysdate) now_date, start_date,progress,viewcnt, good, approve, title_img,ceil(start_date-sysdate) open_date
+		from fund order by viewcnt desc) A 
+		where approve=1 and open_date &gt; 0 and rownum &lt; 6
+	</select>
+	<select id="todayList" resultType="com.example.test.model.fund.dto.FundDTO">
+		select bno,project_name,p_division,s_division,title,max_fund,end_date,company_name,unit,min_fund,now_fund, support,
+		(end_date-sysdate) now_date, start_date,progress,viewcnt,good, approve, title_img
+		from fund where approve=1 and (start_date-sysdate) &gt; 0 and rownum &lt; 6
+		and TO_CHAR(start_date,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD')
+		order by progress desc
+	</select>
+	<select id="supportList" resultType="com.example.test.model.fund.dto.FundDTO">
+		select A.* from (select bno,project_name,p_division,s_division,title,max_fund,end_date,company_name,unit,min_fund,now_fund, support,
+		(end_date-sysdate) now_date, start_date,progress,viewcnt, good, approve, title_img, ceil(start_date-sysdate) open_date
+		from fund order by support desc) A 
+		where approve=1 and open_date &gt; 0 and rownum &lt; 6
+	</select>
+	<update id="increateViewcnt">
+		update fund set viewcnt=viewcnt+1 where bno=#{bno}
+	</update>
+	<select id="view" resultType="com.example.test.model.fund.dto.FundDTO">
+		select bno,project_name,p_division,s_division,title,max_fund,end_date,company_name,unit,min_fund,now_fund, support,title_img,
+		(end_date-sysdate) now_date, start_date,progress,viewcnt,good, limit, ceil(end_date-sysdate) open_date, approve
+		from fund where bno=#{bno} 
+	</select>
+</mapper>

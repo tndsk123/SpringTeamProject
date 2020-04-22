@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<select id="login" resultType="String">
+		select passwd from user1 where userid=#{userid}
+	</select>
+	
+	<select id="view" resultType="com.example.test.model.user.dto.UserDTO">
+		select * from user1 where userid=#{userid}
+	</select>
+	
+	<update id="update">
+		update user1 set account=account-#{account}, fund=fund+1 where userid=#{userid}
+	</update>
+	
+	<select id="id_chk" resultType="int">
+		select count(*) from user1 where userid=#{userid}
+	</select>
+	
+	<insert id="insert">
+		insert into user1(userid,passwd,username,gender,email,hp,address1,address2,address3) 
+		values (#{userid},#{passwd},#{username},#{gender},#{email},#{hp},#{address1},#{address2},#{address3})
+	</insert>
+	
+	<update id="account_up">
+		update user1 set account=account+#{charge} where userid=#{userid}	
+	</update>
+	
+	<update id="grade_up">
+		update user1 a set a.grade=(select b.want_grade from grade_up b where a.userid = b.userid)
+		where userid=(select b.userid from grade_up b where b.gno=#{gno})
+	</update>
+	
+	<update id="email_chk">
+		update user1 set email_chk=1 where userid=#{userid}
+	</update>
+</mapper>
