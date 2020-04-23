@@ -15,15 +15,43 @@ $(function(){
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 	var birthJ = false;
-	// 생년월일 birthJ 유효성 검사
+	//아이디 ajax
+	 $("#user_id").blur(function(){
+		 	if(idJ.test($('#user_id').val())) {
+		 		console.log('true');
+		 		var userid=$("#user_id").val();
+				$.ajax({
+					url : "http://localhost/test/user/id_chk?userid="+userid,
+					type : "get",
+					success : function(data){
+							if(data == 1){
+								$("#id_check").text("사용중인 아이디입니다.");
+								$("#id_check").css("color", "red");
+							}else if(data == 0 && userid != "") {					
+								$('#id_check').text("사용 가능한 아이디 입니다");
+								$('#id_check').css('color', 'blue');
+							}else if(userid == ""){			
+								$('#id_check').text('아이디를 입력해주세요 :)');
+								$('#id_check').css('color', 'red');				
+							} 
+						}
+					});
+
+		 	}else {
+		 		console.log('false');
+		 		$('#id_check').text('4~16자의 소문자 영문, 숫자만 사용 가능합니다.');
+		 		$('#id_check').css('color', 'red');
+		 	}
+			
+	 // 생년월일 birthJ 유효성 검사
 	   $('#user_birth').blur(function(){
 	      var dateStr = $(this).val();
 	      var year = Number(dateStr.substr(0,4)); // 입력한 값의 0~4자리까지 (연)
-	      var month = Number(dateStr.substr(4,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
-	      var day = Number(dateStr.substr(6,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
+	      var month = Number(dateStr.substr(5,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+	      var day = Number(dateStr.substr(8,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
 	      var today = new Date(); // 날짜 변수 선언
 	      var yearNow = today.getFullYear(); // 올해 연도 가져옴
-	      if (dateStr.length <= 8) {
+	      if (dateStr.length <= 10) {
 	         // 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
 	         if (year > yearNow || year < 1900 ){
 	            $('#birth_check').text('생년월일을 확인해주세요.');
@@ -92,7 +120,7 @@ $(function(){
 	   
 	   //전송 클릭 시 유효성 검사
 	   $('form').on('submit',function(){
-	      var inval_Arr = new Array(10).fill(false);
+	      var inval_Arr = new Array(6).fill(false);
 	      //아이디 유효성 검사
 	      if(idJ.test($('#user_id').val())){
 	         inval_Arr[0] = true;
@@ -114,9 +142,9 @@ $(function(){
 	      
 	      //이름 정규식
 	      if(nameJ.test($('#user_name').val())){
-	         inval_Arr[3] = true;
+	         inval_Arr[2] = true;
 	      }else {
-	         inval_Arr[3] = false;
+	         inval_Arr[2] = false;
 	         alert('이름을 확인하세요.');
 	         $("#user_name").focus();
 	         return false;
@@ -124,18 +152,18 @@ $(function(){
 	  
 	      //생년월일 정규식
 	      if(birthJ) {
-	         inval_Arr[5] = true;
+	         inval_Arr[3] = true;
 	      }else {
-	         inval_Arr[5] = false;
+	         inval_Arr[3] = false;
 	         alert('생년월일을 확인하세요.');
 	         $("#user_birth").focus();
 	         return false;
 	      }
 	      //이메일 정규식
 	      if(mailJ.test($('#user_email').val())){
-	         inval_Arr[6] = true;
+	         inval_Arr[4] = true;
 	      }else {
-	         inval_Arr[6] = false;
+	         inval_Arr[4] = false;
 	         alert('이메일을 확인하세요.');
 	         $("#user_email").focus();
 	         return false;
@@ -143,23 +171,21 @@ $(function(){
 	      //휴대폰번호 정규식
 	      if(phoneJ.test($('#user_phone').val())) {
 	         console.log(phoneJ.test($('#user_phone').val()));
-	         inval_Arr[7] = true;
+	         inval_Arr[5] = true;
 	      }else {
-	         inval_Arr[7] = false;
+	         inval_Arr[5] = false;
 	         alert('휴대폰 번호를 확인하세요.');
 	         $("#user_phone").focus();
 	         return false;
 	      }
 	      //주소확인
 	      if($('#user_address').val() == '' && $('#user_detailaddress').val() == ''){
-	         inval_Arr[9] = false;
+	         inval_Arr[6] = false;
 	         alert('주소를 확인하세요.');
 	         $("#address").focus();
 	         return false;
 	      }else
-	         inval_Arr[9] = true;
-	      
-	      //전체 유효성 검사
+	         inval_Arr[6] = true;
 	      var validAll = true;
 	      for(var i=0; i<=inval_Arr.length; i++){
 	         if(inval_Arr[i] == false){
@@ -167,11 +193,12 @@ $(function(){
 	         }
 	      }
 	      if(validAll == true){ // 유효성 모두 통과
-	         alert('패커 회원가입이 완료되었습니다.');
+	         alert('고생하셨네요.');
 	      }else {
 	         alert('입력 정보를 다시 확인하세요.')
 	      }
 	   });
+});
 });
 function daumZipCode() {
 	 new daum.Postcode({
@@ -221,6 +248,7 @@ function daumZipCode() {
 	     }
 	 }).open();
 }
+
 
 
 

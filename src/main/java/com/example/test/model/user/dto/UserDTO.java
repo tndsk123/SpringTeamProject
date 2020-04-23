@@ -8,7 +8,7 @@ public class UserDTO {
 	private String passwd;
 	private String username;
 	private String gender;
-	private Date birth_date;
+	private String birth_date;
 	private String hp;
 	private String email;
 	private String address1;
@@ -21,10 +21,10 @@ public class UserDTO {
 	private int coupon_chk;
 	private Date join_date;
 	
-	public Date getBirth_date() {
+	public String getBirth_date() {
 		return birth_date;
 	}
-	public void setBirth_date(Date birth_date) {
+	public void setBirth_date(String birth_date) {
 		this.birth_date = birth_date;
 	}
 	public Date getJoin_date() {

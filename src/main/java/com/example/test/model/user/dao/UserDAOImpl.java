@@ -1,5 +1,8 @@
 package com.example.test.model.user.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -41,5 +44,20 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void email_chk(String userid) {
 		session.update("user.email_chk", userid);
+	}
+	@Override
+	public String look_id(UserDTO dto) {
+		return session.selectOne("user.look_id", dto);
+	}
+	@Override
+	public String look_pw(UserDTO dto) {
+		return session.selectOne("user.look_pw", dto);
+	}
+	@Override
+	public void update_pw(String userid, String passwd) {
+		Map<String,Object> map=new HashMap<>();
+		map.put("userid", userid);
+		map.put("passwd", passwd);
+		session.update("user.update_pw", map);		
 	}
 }

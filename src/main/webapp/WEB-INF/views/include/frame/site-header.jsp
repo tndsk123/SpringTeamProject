@@ -28,8 +28,16 @@
 					<li class="nav-item"><a class="nav-link" href="#">채권</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">프로젝트 오픈신청</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">IFU</a></li>
-					<li class="nav-item"><a class="nav-link" href="${path}/user/login.do">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="${path}/user/join.do">회원가입</a></li>				
+					<c:choose>
+								<c:when test="${sessionScope.userid == null }">
+									 <li class="nav-item"><a class="nav-link" href="${path}/user/login.do">로그인</a></li>
+									 <li class="nav-item"><a class="nav-link" href="${path}/user/join.do">회원가입</a></li>
+								</c:when>
+								<c:otherwise>
+									 <li class="nav-item"><a class="nav-link" href="${path}/user/mypage.do">마이페이지</a></li>
+									 <li class="nav-item"><a class="nav-link" href="${path}/user/logout.do">로그아웃</a></li>
+								</c:otherwise>
+					</c:choose>								
 				</ul>
 			</div>
 		</div>

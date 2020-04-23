@@ -10,4 +10,7 @@ public interface UserDAO {
 	public int id_chk(String userid);
 	public void grade_up(int gno);
 	public void email_chk(String userid);
+	public String look_id(UserDTO dto);
+	public String look_pw(UserDTO dto);
+	public void update_pw(String userid, String passwd);
 }

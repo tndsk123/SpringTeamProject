@@ -13,7 +13,7 @@
 	<div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="${path}/">Home</a> <span class="mx-2 mb-0">/</span> <a href="${path}/fund/list.do">투자</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${list.project_name}</strong></div>
+          <div class="col-md-12 mb-0"><a href="${path}/">Home</a> <span class="mx-2 mb-0">/</span> <a href="${path}/fund/list.do">${list.s_division}</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${list.project_name}</strong></div>
         </div>
       </div>
     </div>

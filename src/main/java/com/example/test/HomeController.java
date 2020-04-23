@@ -20,9 +20,8 @@ public class HomeController {
 	FundService fundService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home() throws Exception{
+	public ModelAndView home(ModelAndView mav) throws Exception{
 		logger.info("메인페이지 실행");
-		ModelAndView mav=new ModelAndView();
 		mav.addObject("support_list", fundService.supportList());
 		mav.addObject("cnt_list", fundService.viewcntList());
 		mav.addObject("good_list", fundService.likeList());

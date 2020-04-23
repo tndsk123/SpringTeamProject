@@ -8,6 +8,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <%@ include file="include/header.jsp"%>
+<c:if test="${param.message == 'logout'}">
+	<script type="text/javascript">
+		alert("로그아웃 되었습니다.");
+	</script>
+</c:if>
+<c:if test="${param.message == 'login'}">
+	<script type="text/javascript">
+		alert("로그인 되었습니다.");
+	</script>
+</c:if>
 </head>
 <body>
 <%@ include file="include/frame/site-header.jsp"%>

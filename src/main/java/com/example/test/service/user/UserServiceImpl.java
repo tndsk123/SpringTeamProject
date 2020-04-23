@@ -2,12 +2,14 @@ package com.example.test.service.user;
 
 import javax.inject.Inject;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.test.model.user.dao.UserDAO;
 import com.example.test.model.user.dto.UserDTO;
 import com.example.test.service.email.EmailService;
+import com.example.test.util.Random;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,6 +18,8 @@ public class UserServiceImpl implements UserService {
 	UserDAO dao;
 	@Inject
 	EmailService email;
+	@Inject
+	BCryptPasswordEncoder pwEncoder;
 	
 	@Override
 	public String login(UserDTO dto) {
@@ -52,5 +56,38 @@ public class UserServiceImpl implements UserService {
 	public void email_chk(String userid) {
 		dao.email_chk(userid);		
 	}
-
+	
+	@Override
+	public int look_id(UserDTO dto) {
+		String userid=dao.look_id(dto);
+		dto.setUserid(userid);
+		if(userid != null) {
+			try {
+				email.Look_id_Mail(dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return 1;
+		}else {
+			return 0;	
+		} 
+	}
+	@Override
+	public int look_pw(UserDTO dto) {
+		String userid=dao.look_pw(dto);
+		String pre_passwd=Random.random("1");
+		String passwd=pwEncoder.encode(pre_passwd);
+		dao.update_pw(userid, passwd);
+		dto.setPasswd(pre_passwd);
+		if(userid != null) {
+			try {
+				email.Look_pw_joinMail(dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return 1;
+		}else {
+			return 0;	
+		} 
+	}
 }

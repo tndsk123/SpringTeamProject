@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>IFU</title>
 <%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="${path}/include/css/login.css">
 <script>
 $(function(){
 	$("#btnLogin").click(function(){
@@ -28,14 +29,39 @@ $(function(){
 			document.form1.submit();
 		}
 	});
-
-
 });
 </script>
 </head>
 <body>
 	<%@ include file="../include/frame/site-header.jsp"%>
-	<div>
+	<div id="logreg-forms">
+		<form class="form-signin" method="post" name="form1">
+			<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">로그인</h1>
+			<div class="input-group">
+				<input type="text" id="userid" name="userid" class="form-control" placeholder="아이디" >
+			</div>
+
+			<div class="input-group">
+				<input type="password" id="passwd" name="passwd" class="form-control" placeholder="비밀번호" >
+			</div>
+
+			<div class="input-group">
+				<button class="btn btn-md btn-rounded btn-block form-control submit" type="submit" id="btnLogin">
+					<i class="fa fa-sign-in-alt"></i>로그인
+				</button>
+			</div>
+			<div class="input-group mt-3" style="text-align: center;">
+				<a href="${path}/user/looking_for.do">아이디/비밀번호 찾기</a>
+			</div>
+			<hr>
+			<a href="${path}/user/join.do">
+				<button class="btn btn-primary btn-block" type="button" id="btn-signup">
+					<i class="fa fa-user-plus"></i> 회원가입
+				</button>
+			</a>
+		</form>
+	</div>
+	<%-- <div>
 		<h2>로그인</h2>
 <form name="form1" method="post">
 <table border="1">
@@ -69,7 +95,7 @@ $(function(){
 	</tr>
 </table>
 </form> 
-	</div>
+	</div> --%>
 	<%@ include file="../include/frame/site-footer.jsp"%>
 </body>
 </html>

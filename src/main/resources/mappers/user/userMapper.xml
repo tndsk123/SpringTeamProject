@@ -37,4 +37,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="email_chk">
 		update user1 set email_chk=1 where userid=#{userid}
 	</update>
+	
+	<select id="look_id" resultType="String">
+		select userid from user1 where username=#{username} and email=#{email}
+	</select>
+	
+	<select id="look_pw" resultType="String">
+		select userid from user1 where userid=#{userid} and email=#{email}
+	</select>
+	
+	<update id="update_pw">
+		update user1 set passwd=#{passwd} where userid=#{userid}	
+	</update>
 </mapper>

@@ -23,6 +23,7 @@
 			<div class="row">
 				<i class="fa fa-magnet fa-spin"></i> IFU 회원가입
 			</div>
+			<form method="post" name="form1" action="${path}/user/join_user.do">
 			<div class="row-align-items-center">
 				 <div class="form-group">
          		<em style="color:red">*</em>
@@ -43,7 +44,7 @@
 				 <div class="form-group">
          		<em style="color:red">*</em>
          		<label for="user_id" class="control-label">비밀번호 재입력</label>
-         		<input type="password" class="form-control" id="user_pw2" name="user_pw2">
+         		<input type="password" class="form-control" id="user_pw2">
          		<div class="eheck_font" id="pw2_check"></div>
        	 </div>
 			 </div>
@@ -59,8 +60,8 @@
 				 <div class="form-group">
          		<em style="color:red">*</em>
          		<label for="user_id" class="control-label">성별</label><br>
-         		<input type="radio" id="male" name="gender">Male
-         		<input type="radio" class="ml-4" id="female" name="gender">FeMale
+         		<input type="radio" id="male" name="gender" value="남성">Male
+         		<input type="radio" class="ml-4" id="female" name="gender" value="여성">FeMale
        	 </div>
 			 </div>
 			 <div class="row-align-items-center">
@@ -68,6 +69,7 @@
          		<em style="color:red">*</em>
          		<label for="user_id" class="control-label">생년월일</label>
          		<input type="date" class="form-control" id="user_birth" name="birth_date">
+         		<div class="eheck_font" id="birth_check"></div>
        	 </div>
 			 </div>
 			 <div class="row-align-items-center">
@@ -90,15 +92,15 @@
          		<label for="user_id" class="control-label">주소</label>
          		<div class="row">
          			<div class="col-4 mb-2">
-      					<input type="text" class="form-control" id="user_address" name="address1">
+      					<input type="text" class="form-control" id="user_address" name="address1" readonly>
     					</div>
     					<div class="col-8 mb-2">
-      					<input type="text" class="form-control" id="user_detailaddress" name="address2">
+      					<input type="text" class="form-control" id="user_detailaddress" name="address2" readonly>
    					 	</div>
          		</div>
          		<div class="row">
          			<div class="col-8 mb-2">
-      					<input type="text" class="form-control" id="user_id" name="address3" placeholder="상세주소입력">
+      					<input type="text" class="form-control" id="address3" name="address3" placeholder="상세주소입력">
     					</div>
     					<div class="col-4 mb-2">
       					<input type="button" class="form-control" onclick="daumZipCode()" value="우편번호 찾기">
@@ -111,6 +113,7 @@
 			 			<button type="submit" class="form-control btn btn-primary">회 원 가 입</button>
 			 		</div>
 			 </div>
+			 </form>
 		</div>
 	</div>
 </div>
