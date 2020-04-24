@@ -33,19 +33,6 @@ public class FundDTO {
 	private String writer;//등록한 사람
 	private int now_date;//남은 기간
 	private int open_date;
-	
-	public int getOpen_date() {
-		return open_date;
-	}
-	public void setOpen_date(int open_date) {
-		this.open_date = open_date;
-	}
-	public int getNow_date() {
-		return now_date;
-	}
-	public void setNow_date(int now_date) {
-		this.now_date = now_date;
-	}
 	public int getBno() {
 		return bno;
 	}
@@ -208,6 +195,18 @@ public class FundDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	public int getNow_date() {
+		return now_date;
+	}
+	public void setNow_date(int now_date) {
+		this.now_date = now_date;
+	}
+	public int getOpen_date() {
+		return open_date;
+	}
+	public void setOpen_date(int open_date) {
+		this.open_date = open_date;
+	}
 	@Override
 	public String toString() {
 		return "FundDTO [bno=" + bno + ", project_name=" + project_name + ", company_name=" + company_name
@@ -220,5 +219,6 @@ public class FundDTO {
 				+ ", margin_date=" + margin_date + ", writer=" + writer + ", now_date=" + now_date + ", open_date="
 				+ open_date + "]";
 	}
+	
 	
 }

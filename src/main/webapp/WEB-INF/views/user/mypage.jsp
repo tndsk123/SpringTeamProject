@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>IFU</title>
 <%@ include file="../include/header.jsp"%>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="${path}/include/js/user_update.js"></script>
 <style type="text/css">
 .usertitle {
 	font-size: 30px;
@@ -65,6 +67,11 @@
 	color: #cc3000;
 }
 </style>
+<c:if test="${message == 'error'}">
+<script type="text/javascript">
+  alert("비밀번호 틀렸음");
+</script>
+</c:if>
 </head>
 <body>
 	<%@ include file="../include/frame/site-header.jsp"%>
@@ -104,11 +111,11 @@
 		  			<c:choose>
 		  				<c:when test="${dto.coupon_chk == 0}">
 		  					<span class="second-tier">쿠폰이 없습니다.</span>
-		  					<a href="#">쿠폰 이벤트 확인</a>
+		  					<a href="${path}/coupon/coupon_box.do">쿠폰 이벤트 확인</a>
 		  				</c:when>
 		  				<c:otherwise>
-		  					<span class="second-tier">${dto.coupon_chk}장</span>
-		  					<a href="#">쿠폰함보기</a>
+		  					<p><span class="second-tier">${dto.coupon_chk}장</span></p>
+		  					<a href="${path}/coupon/my_coupon.do">쿠폰함보기</a>
 		  				</c:otherwise>
 		  			</c:choose>
 		  		</div>
@@ -149,60 +156,91 @@
               <span class="none-Enrollment">※<strong>개인정보수정</strong></span>
             </div>
           </div>
-          <form method="post" name="form1" action="${path}/user/update_user.do">
+          <form method="post" name="form1" id="form1" action="${path}/user/update_user.do">
           <div class="row align-items-center">
             <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="아이디" id="userid" name="userid" value="${dto.userid}">
+            	<label for="userid">아이디</label>
+              <input type="text" class="form-control" id="userid" name="userid" value="${dto.userid}" readonly>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+            	<label for="username">이름</label>
+              <input type="text" class="form-control" id="username" name="username" value="${dto.username}" readonly>
             </div>
           </div>
           <div class="row align-items-center mt-4">
             <div class="col">
-              <input type="password" class="form-control" placeholder="비밀번호" id="passwd" name="passwd">
+            	<label for="hp">핸드폰</label>
+              <input type="text" class="form-control" placeholder="'-'빼고 입력해주세요" id="hp" name="hp" value="${dto.hp}">
             </div>
           </div>
           <div class="row align-items-center mt-4">
             <div class="col">
-              <input type="text" class="form-control" placeholder="핸드폰" id="hp" name="hp" value="${dto.hp}">
-            </div>
-          </div>
-          <div class="row align-items-center mt-4">
-            <div class="col">
+            	<label for="email">이메일</label>
               <input type="text" class="form-control" placeholder="이메일" id="email" name="email" value="${dto.email}">
             </div>
           </div>
           <div class="row align-items-center mt-4">
             <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="우편번호" id="adress1" name="adress1" value="${dto.address1}">
+            	<label for="address1">우편번호</label>
+              <input type="text" class="form-control" id="address1" name="address1" value="${dto.address1}">
             </div>
             <div class="col-md-8">
-            	<input type="text" class="form-control" placeholder="주소" id="adress2" name="adress2" value="${dto.address2}">             
+            	<label for="address2">주소</label>
+            	<input type="text" class="form-control" id="address2" name="address2" value="${dto.address2}">             
             </div>
           </div>
           <div class="row align-items-center mt-4">
             <div class="col-md-8">
-              <input type="text" class="form-control" placeholder="상세주소" id="adress3" name="adress3" value="${dto.address3}">
+            	<label for="address3">상세주소</label>
+              <input type="text" class="form-control" placeholder="상세주소" id="address3" name="address3" value="${dto.address3}">
             </div>
             <div class="col-md-4">
-              <button class="btn btn-info">우편번호 찾기</button>
+            	<label for="zip">.</label>
+              <input type="button" class="form-control btn btn-info" onclick="daumZipCode()" value="우편번호 찾기" id="zip">
             </div>
           </div>
 		  		<div class="row align-items-center mt-4">
             <div class="col">
-
-              <input type="date" class="form-control" placeholder="YYYY-MM-DD" id="birth_date" name="birth_date"
-               value="">
+							<label for="birth_date">생년월일</label>
+              <input type="text" class="form-control" id="birth_date" name="birth_date"
+               value="${dto.birth_date}" readonly>
             </div>
           </div>
           <div class="row justify-content-start mt-3">
             <div class="col-md-12 text-center">
               <button class="btn btn-primary mt-3 mb-4">정보수정</button>
+              <button type="button" class="btn btn-danger mt-3 mb-4 ml-3" data-toggle="modal" data-target="#myModal">비밀번호수정하러가기</button>
             </div>
           </div>
           </form>
         </div>
       </div>
     </div>
-
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">비밀번호찾기</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<form method="post" name="pw_form" action="${path}/user/chk_passwd.do">
+				<div class="modal-body">
+					<div class="container">
+            	<label for="passwd">비밀번호</label>
+              <input type="password" class="form-control" id="passwd" name="passwd">
+           </div>           
+				</div>
+				<div class="modal-footer">
+				<button type="submit" class="btn btn-info">확인</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<%@ include file="../include/frame/site-footer.jsp"%>
 </body>
 </html>

@@ -47,6 +47,10 @@ public class UserController {
 	public String looking_for() {
 		return "user/looking_for";
 	}
+	@RequestMapping("update_passwd.do")
+	public String update_passwd() {
+		return "user/update_passwd";
+	}
 	
 	@RequestMapping("join_user.do")
 	public ModelAndView insert(@ModelAttribute UserDTO dto) {
@@ -135,4 +139,55 @@ public class UserController {
 		return mav;
 	}
 	
+	@RequestMapping("update_user.do")
+	public ModelAndView update_user(@ModelAttribute UserDTO dto) {
+		System.out.println(dto);
+		userService.update_user(dto);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto", userService.user_view(dto.getUserid()));
+		mav.setViewName("user/mypage");
+		return mav;
+	}
+	
+	@RequestMapping("chk_passwd.do")
+	public ModelAndView chk_passwd(@RequestParam("passwd") String passwd,HttpSession session) {
+		String userid=(String)session.getAttribute("userid");
+		UserDTO dto=new UserDTO();
+		dto.setPasswd(passwd);
+		dto.setUserid(userid);
+		String result=userService.login(dto);
+		ModelAndView mav=new ModelAndView();
+		if(pwEncoder.matches(dto.getPasswd(), result)) {
+			mav.setViewName("user/update_passwd");
+			return mav;
+		}else {
+			mav.setViewName("redirect:/user/mypage.do");
+			mav.addObject("message", "error");
+			return mav;   
+		} 
+		
+	}
+	
+	@RequestMapping("update_pwd.do")
+	public ModelAndView update_pwd(@RequestParam("prw_pw") String pre_passwd, @RequestParam("passwd") String passwd, HttpSession session) {
+		System.out.println(pre_passwd);
+		System.out.println(passwd);
+		String userid=(String)session.getAttribute("userid");
+		UserDTO dto=new UserDTO();
+		dto.setPasswd(pre_passwd);
+		dto.setUserid(userid);
+		String result=userService.login(dto);
+		ModelAndView mav=new ModelAndView();
+		if(pwEncoder.matches(dto.getPasswd(), result)) {
+			dto.setPasswd(pwEncoder.encode(passwd));
+			userService.update_passwd(dto);;
+			mav.setViewName("user/mypage");
+			return mav;
+		}else {
+			mav.setViewName("user/update_passwd");
+			mav.addObject("message", "error");
+			return mav;   
+		}
+
+	}
 }

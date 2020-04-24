@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="view" resultType="com.example.test.model.user.dto.UserDTO">
-		select * from user1 where userid=#{userid}
+		select userid,passwd,username,gender,email,hp,address1,address2,
+		address3,TO_CHAR(birth_date,'YYYYMMDD') birth_date,grade,email_chk,
+		account_chk,company_chk,coupon_chk,join_date from user1 where userid=#{userid}
 	</select>
 	
 	<update id="update">
@@ -21,8 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insert">
-		insert into user1(userid,passwd,username,gender,email,hp,address1,address2,address3) 
-		values (#{userid},#{passwd},#{username},#{gender},#{email},#{hp},#{address1},#{address2},#{address3})
+		insert into user1(userid,passwd,username,gender,email,hp,address1,address2,address3,birth_date) 
+		values (#{userid},#{passwd},#{username},#{gender},#{email},#{hp},#{address1},#{address2},#{address3},#{birth_date})
 	</insert>
 	
 	<update id="account_up">
@@ -48,5 +50,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="update_pw">
 		update user1 set passwd=#{passwd} where userid=#{userid}	
+	</update>
+	
+	<update id="update_user">
+		update user1 set hp=#{hp}, email=#{email}, address1=#{address1}, address2=#{address2}, address3=#{address3} where userid=#{userid}	
+	</update>
+	
+	<update id="update_passwd">
+		update user1 set passwd=#{passwd} where userid=#{userid}	
+	</update>
+	
+	<update id="update_coupon">
+		update user1 set coupon_chk=coupon_chk+1 where userid=#{userid}	
 	</update>
 </mapper>

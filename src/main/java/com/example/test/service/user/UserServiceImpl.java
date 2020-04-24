@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService {
 			return 0;	
 		} 
 	}
+	@Transactional
 	@Override
 	public int look_pw(UserDTO dto) {
 		String userid=dao.look_pw(dto);
@@ -90,4 +91,13 @@ public class UserServiceImpl implements UserService {
 			return 0;	
 		} 
 	}
+	@Override
+	public void update_user(UserDTO dto) {
+		dao.update_user(dto);
+	}
+	@Override
+	public void update_passwd(UserDTO dto) {
+		dao.update_passwd(dto);
+	}
+	
 }

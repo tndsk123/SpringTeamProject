@@ -5,10 +5,25 @@ import java.util.Date;
 public class CouponDTO {
 
 	private int cou_no;
+	private String c_division;
 	private String coupon_name;
 	private String coupon_content;
 	private int discount;
 	private Date validity;
+	private int secret;
+		
+	public String getC_division() {
+		return c_division;
+	}
+	public void setC_division(String c_division) {
+		this.c_division = c_division;
+	}
+	public int getSecret() {
+		return secret;
+	}
+	public void setSecret(int secret) {
+		this.secret = secret;
+	}
 	public int getCou_no() {
 		return cou_no;
 	}
@@ -42,7 +57,7 @@ public class CouponDTO {
 	@Override
 	public String toString() {
 		return "CouponDTO [cou_no=" + cou_no + ", coupon_name=" + coupon_name + ", coupon_content=" + coupon_content
-				+ ", discount=" + discount + ", validity=" + validity + "]";
+				+ ", discount=" + discount + ", validity=" + validity + ", secret=" + secret + "]";
 	}
 
 	

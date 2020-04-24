@@ -60,4 +60,17 @@ public class UserDAOImpl implements UserDAO {
 		map.put("passwd", passwd);
 		session.update("user.update_pw", map);		
 	}
+	@Override
+	public void update_user(UserDTO dto) {
+		session.update("user.update_user", dto);
+	}
+	
+	@Override
+	public void update_passwd(UserDTO dto) {
+		session.update("user.update_passwd", dto);
+	}
+	@Override
+	public void update_coupon(String userid) {
+		session.update("user.update_coupon", userid);
+	}
 }

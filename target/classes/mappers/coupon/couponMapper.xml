@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="coupon">
+	<select id="list" resultType="com.example.test.model.coupon.dto.CouponDTO">
+		select * from coupon where secret=0
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from coupon where secret=0
+	</select>
+	<select id="view" resultType="com.example.test.model.coupon.dto.CouponDTO">
+		select * from coupon where cou_no=#{cou_no}
+	</select>
+</mapper>

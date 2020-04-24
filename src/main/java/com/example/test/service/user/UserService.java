@@ -12,4 +12,6 @@ public interface UserService {
 	public void email_chk(String userid);
 	public int look_id(UserDTO dto);
 	public int look_pw(UserDTO dto);
+	public void update_user(UserDTO dto);
+	public void update_passwd(UserDTO dto);
 }

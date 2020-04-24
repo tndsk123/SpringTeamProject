@@ -13,4 +13,7 @@ public interface UserDAO {
 	public String look_id(UserDTO dto);
 	public String look_pw(UserDTO dto);
 	public void update_pw(String userid, String passwd);
+	public void update_user(UserDTO dto);
+	public void update_passwd(UserDTO dto);
+	public void update_coupon(String userid);
 }

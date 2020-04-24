@@ -54,6 +54,11 @@ $(function(){
 				<a href="${path}/user/looking_for.do">아이디/비밀번호 찾기</a>
 			</div>
 			<hr>
+			<c:if test="${message == 'error' }">
+				<div class="input-group mb-3" style="color:red;">
+					아이디 또는 비밀번호가 일치하지 않습니다.
+				</div>
+			</c:if>
 			<a href="${path}/user/join.do">
 				<button class="btn btn-primary btn-block" type="button" id="btn-signup">
 					<i class="fa fa-user-plus"></i> 회원가입

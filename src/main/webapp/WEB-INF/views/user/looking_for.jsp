@@ -12,6 +12,46 @@
 		alert("입력하신 정보가 없습니다.");
 	</script>
 </c:if>
+<style type="text/css">
+.findtitle {
+	font-size: 35px;
+	font-weight: 700;
+	color: #000000;
+}
+
+.findid  {
+	margin-right: 20px;
+}
+
+.findida {
+	border-bottom: 2px solid;
+}
+
+.find-container {
+	background-color: #f5f7fa;
+	height: 700px;
+}
+
+.find-id-go p {
+	margin-bottom : 0;
+	color: #000000;
+	
+}
+
+.findid-text {
+	width: 400px;
+	height: 50px;
+}
+
+.btn-findid {
+	width: 400px;
+	height: 50px;	
+}
+
+.email-check > input {
+	padding: 0 .94118em;
+}
+</style>
 </head>
 <body>
 	<%@ include file="../include/frame/site-header.jsp"%>
@@ -24,55 +64,69 @@
 		</div>
 	</div>
 	<div class="container">
-		<h1>아이디 / 비밀번호 찾기</h1>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+		<div class="row mt-5">
+			<h1 class="findtitle">아이디/ 비밀번호 찾기</h1>
+		</div>
+		<div class="row mt-5">
+			<div class="col">
 				<ul class="nav nav-tabs">
 					<li class="col-md-6	text-center active"><a data-toggle="tab" href="#tab1">아이디 찾기</a></li>
 					<li class="col-md-6 text-center"><a data-toggle="tab" href="#tab2">비밀번호 찾기</a></li>
 				</ul>
-			
 				<div class="tab-content">
 					<div id="tab1" class="tab-pane fade in activce">
-						<div id="mt-3">
+						<div class="find-container">
+							<div class="row justify-content-center">
+								<div class="mt-5 find-id-go">
+									<p>이프유는 아이디를 잊어버리셨나요?</p>
+									<p>소유하고 계신 계정을 입력해보세요.</p>
+									<p>가입여부를 확인해드립니다.</p>
+								</div>
+							</div>
 							<form class="form-signin" method="post" name="form_id" action="${path}/user/look_id.do">
-								<h1 class="h3 mb-3 font-weight-normal"
-									style="text-align: center">아이디 찾기</h1>
-								<div class="input-group">
-									<input type="text" id="username" name="username" class="form-control" placeholder="이름">
-									<div id="name_check"></div>
+							<div class="mt-5">
+								<div class="row justify-content-center email-check">
+									<input type="text" placeholder="아이디" id="username" name="username" class="form-control findid-text">
+								</div>																
+							</div>
+							<div class="mt-5">
+								<div class="row justify-content-center email-check">
+									<input type="text" placeholder="이메일 계정" id="email" name="email" class="form-control findid-text">
 								</div>
-								<div class="input-group mt-3">
-									<input type="email" id="email" name="email" class="form-control" placeholder="이메일">
-									<div id="email_check"></div>
+							</div>
+							<div class="mt-5">
+								<div class="row justify-content-center">
+									<button type="submit" class="btn btn-primary btn-findid">확인</button>
 								</div>
-								<div class="input-group mt-3">
-									<button class="btn btn-primary btn-block" type="submit" id="btnLook_id">
-											<i class="fa fa-search"></i> 아이디찾기
-									</button>
-								</div>
+							</div>
 							</form>
 						</div>
 					</div>
 					<div id="tab2" class="tab-pane fade">
-						<div id="text-center mt-3">
-							<form class="form-signin" method="post" name="form_pw" action="${path}/user/look_pw.do">
-								<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">비밀번호 찾기</h1>
-								<div class="input-group">
-									<input type="text" id="userid" name="userid" class="form-control" placeholder="아이디">
-									<div id="id_check"></div>
+						<div class="find-container">
+							<div class="row justify-content-center">
+								<div class="mt-5 find-id-go">
+									<p>이프유는 비밀번호를 잊어버리셨나요?</p>
+									<p>소유하고 계신 계정을 입력해보세요.</p>
+									<p>가입여부를 확인해드립니다.</p>
 								</div>
-								<div class="input-group mt-3">
-									<input type="email" id="email2" name="email"	class="form-control" placeholder="이메일">
-									<div id="email_check"></div>
+							</div>
+							<form class="form-signin" method="post" name="form_id" action="${path}/user/look_pw.do">
+							<div class="mt-5">
+								<div class="row justify-content-center email-check">
+									<input type="text" placeholder="아이디" id="userid" name="userid" class="form-control findid-text">
+								</div>																
+							</div>
+							<div class="mt-5">
+								<div class="row justify-content-center email-check">
+									<input type="text" placeholder="이메일 계정" id="email" name="email" class="form-control findid-text">
 								</div>
-								<div class="input-group mt-3">
-									<button class="btn btn-primary btn-block" type="submit" id="btnLook_pw">
-										<i class="fa fa-search"></i> 비밀번호 찾기
-									</button>
+							</div>
+							<div class="mt-5">
+								<div class="row justify-content-center">
+									<button type="submit" class="btn btn-primary btn-findid">확인</button>
 								</div>
+							</div>
 							</form>
 						</div>
 					</div>
@@ -80,6 +134,7 @@
 			</div>
 		</div>
 	</div>
+
 	<%@ include file="../include/frame/site-footer.jsp"%>
 </body>
 </html>
