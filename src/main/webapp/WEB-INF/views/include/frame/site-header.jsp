@@ -4,8 +4,8 @@
 		<div class="container">
 			<div class="row">
 				<ul class="col-9 nav contact_list">
-					<li><span><i class="far fa-envelope"></i></span> <a href="mailto:info@ifu.com">info@ifu.com</a></li>
-					<li><span><i class="fas fa-phone"></i></span> <span>02-1234-5678</span></li>
+					<li><span><i class="far fa-envelope"></i></span> <a href="mailto:info@ifu.com">service@ifu.com</a></li>
+					<li><span><i class="fas fa-phone"></i></span> <span>1600-1774</span></li>
 				</ul>
 				<ul class="col-3 nav justify-content-end social_list">
 					<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

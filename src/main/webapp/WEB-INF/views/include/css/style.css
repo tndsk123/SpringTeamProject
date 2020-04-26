@@ -1,48 +1,138 @@
 @charset "UTF-8";
-/* ------- 공통 요소 ------- */
-img {max-width: 100%; height: auto; vertical-align: top;}
-section {margin: 25px 0;}
-.section-contents h1 {white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
-/* ------- 헤더 ------- */
-header .top_navigation {border-bottom: 1px solid #e6e8eb; padding: 22px 0; background: #fff;}
+/*-----------------------------------------------------------------------------------
+
+    Project Name: IFU 투자 웹 어플리케이션
+    Member : 백앤드 - 김영수, 변우영 │ 프론트앤드 - 이재천, 정준영
+    Hoping that only good things will happen to us
+
+-----------------------------------------------------------------------------------
+    
+    [컨텐츠]
+    
+    1. 템플릿 리셋 CSS (include/css/reset.css)
+    2. 메인 스타일 CSS (include/css/style.css)
+    3. 공통 요소 (Common Elements)
+    4. 공통 헤더 (Header)
+    5. 메인 페이지 (Main Page)
+    6. 주식 페이지 (Stock Page)
+    7. 채권 페이지 (Bond Page)
+    8. 프로젝트 오픈 신청 페이지 (Project Applications Page)
+    9. 회사소개 페이지 (Company Introduction Page)
+    10. 로그인 페이지 (Login Page)
+    11. 회원가입 페이지 (Sign Up Page)
+    12. 공통 푸터 (Footer)
+    
+-----------------------------------------------------------------------------------*/
+
+/* ------- 3. 공통 요소 (Common Elements) ------- */
+/* 폰트  */
+h3 {font-weight: 900;}
+h5 {font-weight: 600;}
+/* 이미지 태그 반응형  */
+img {max-width: 100%; height: auto; vertical-align: top; display: block; margin: 0 auto;}
+/* 섹션 아티클 패딩 값  */
+section {padding: 10px 0;}
+article {Padding: 5px 0;}
+.percentage {font-family: 'Nanum Gothic', sans-serif; font-weight: 700; color: #e64a19; margin-right: 6px;}
+.new {font-family: 'Nanum Gothic', sans-serif; font-weight: 700; color: #e64a19; box-shadow: 0 1px 1px rgba(0,0,0,.1);}
+.progress, .progress-bar {height: 3px;}
+/* 컨텐츠 제목  */
+.section-contents h5 {white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+
+/* ------- 4. 공통 헤더 (Header) ------- */
+header .top_navigation {background: #f9f8f7; border-bottom: 1px solid #ebebeb; padding: 22px 0;}
 .contact_list, .social_list {padding: 0 15px;}
-.contact_list li {padding: 0 5px; font-size: 12px;}
+.contact_list li {padding: 0 5px; font-size: 0.875em; font-weight: bold;}
 .contact_list li a:hover {color: #ff9900;}
 .contact_list li span {margin-right: 10px;}
-.contact_list li span:first-child {font-size: 16px; line-height: 16px; color: #563540;}
+.contact_list li span:first-child {font-size: 1em;}
 .social_list li {padding: 0 5px;}
-.social_list li a {font-size: 14px;}
+.social_list li a {font-size: 0.875em;}
 .social_list li a:hover {color: #ff9900;}
-/* ------- 메뉴 ------- */
+/* 메뉴 (navbar) */
 @media screen and (max-width: 425px) {.top_navigation {display: none;}}
-/* #header-sroll {position: fixed; height: 100px; background: #ccc; left: 0; top: 0; width: 100%; -ms-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out;} */
-.sticky.is-sticky {position: fixed; left: 0; right: 0; top: 0; z-index: 1000; width: 100%;}
-.navbar-default {background: #fff; border-bottom: 1px solid #e6e8eb; box-shadow: 0 5px 5px rgba(0,0,0,.1);}
+.sticky.is-sticky {position: fixed; left: 0; right: 0; top: 0; z-index: 1000; -ms-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out;}
+.navbar-default {background: #f9f8f7; border-bottom: 1px solid #ebebeb; box-shadow: 0 5px 5px rgba(0,0,0,.1);}
 .navbar-default .navbar-collapse {border-color: transparent;}
 .navbar-default .navbar-brand .fa {color: #000; font-size: 42px;}
-.navbar-default .navbar-nav li a {color: #777; font-size: 16px; letter-spacing: 1px; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; padding-right: 22px; padding-left: 22px;}
-.navbar-default .navbar-nav > li a:hover {color: #333 !important;}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {color: #777; background-color: transparent;}
-.navbar-default .navbar-nav li a:hover,
-.navbar-default .navbar-nav .active > a {color: #333;}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {color: #333; background-color: transparent;}
+.navbar-default .navbar-nav li a {font-size: 1.188em; font-weight: 700; letter-spacing: 1px; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out;}
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav > .active > a:hover {color: #ff9900;}
 .navbar-default .navbar-toggler {border: none;}
-.navbar-default .navbar-toggler:hover,
-.navbar-default .navbar-toggler:focus {background-color: transparent;}
+.navbar-default .navbar-toggler:hover {background-color: transparent;}
 .custom-toggler .navbar-toggler-icon {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(51, 51, 51)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");}
-/* ------- 컨텐츠 ------- */
-.lank {margin: 15px 0; border-bottom: 1px solid #e6e8eb;}
-.today-open small {color: #f0f0f0; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
-.today-open .to-thumb {position: relative; padding: 0; margin-top: 32px;}
-.today-open .to-thumb .to-overlay {position: absolute; background: #222; color: #ffffff; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; text-align: center; vertical-align: top; opacity: 0; transition: all 0.4s ease-in-out;}
+
+/* ------- 5. 메인 페이지 (Main Page) ------- */
+/* 메인 캐러셀 */
+#carousel .item img {display: block; cursor:grab; cursor:-webkit-grab;}
+.owl-theme .owl-controls .owl-page span {-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; background: none; border:1px solid #000;}
+.owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span{background: #888; border: 1px solid #888;}
+/* 이 프로젝트 어때요? */
+.how-project-thumb {padding: 15px 0;}
+.how-project-summary p:first-child {margin-bottom: 3px; font-size: 0.938em;}
+.how-project-summary p:last-child {font-size: 0.813em;}
+/* 실시간 랭킹  */
+.lank-tabs {padding: 15px 0;}
+.lank {padding: 10px 0; border-bottom: 1px solid #ebebeb;}
+.lank-contents p:first-child {margin-bottom: 3px; font-size: 0.938em;}
+.lank-contents p:last-child {font-size: 0.813em;}
+/* 오늘 오픈한 프로젝트  */
+.today-open small {color: #f0f0f0; font-size: 10px; letter-spacing: 1px;}
+.today-open .to-thumb {position: relative; padding: 15px 0;}
+.today-open .to-thumb .to-overlay {position: absolute; background: #222; color: #f2f2f2; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; text-align: center; vertical-align: top; opacity: 0; transition: all 0.4s ease-in-out;}
 .today-open .to-item {position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
 .today-open .to-thumb:hover .to-overlay {opacity: 0.9;}
-.today-open .text-center {padding-top: 62px;}
+
+/* ------- 6. 주식 페이지 (Stock Page) ------- */
+/* 주식 상품 상세 페이지  */
+.product-details div .pd-view {box-shadow: 0 5px 5px rgba(0,0,0,.1); border-bottom: 1px solid #bf815e;}
+.stock-btn {display: block; float: left; margin-right: 8px; margin-left: -8px; background: #006666; padding: 0 8px; color: #f2f2f2; font-weight: 500; font-style: normal;}
+.swiper-container {width: 100%;}
+.swiper-slide {display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center;}
+.product-details-content {border-top: 3px solid #22252b;}
+.pd-share {margin-top: 20px;}
+.pd-share button {background-color: transparent; border: 1px solid #b6b6b6; border-radius: 50%; color: #777; width: 31px; height: 31px; line-height: 29px; margin-right: 11px; margin-top: 5px; text-align: center;}
+.pd-share button:hover {background-color: #21242c; border: 1px solid #21242c; color: #f2f2f2;}
+.pd-categories {margin-top: 20px;}
+.pd-categories li {display: inline-block; margin-right: 10px;}
+.pd-categories li a {color: #666; text-transform: capitalize;}
+.pd-categories li a:hover {color: #f3a395;}
+/* 회사 네임카드  */
+
+/* 투자 상세 중간 탭 네비게이션  */
+.classic-tabs .nav {position: relative; overflow-x: auto; white-space: nowrap;}
+.classic-tabs .nav li a {display: block; padding: 10px 15px; font-size: 1.063em; text-align: center; text-transform: uppercase; border-radius: 0;}
+.tab-content section > div {margin:24px 0;}
+/* 핵심정보 탭  */
+.ex-contents {margin-top: 24px; font-size: 1.063em;}
+.stock-table-contents {border-bottom: 1px solid #f0f2f5; padding-top: 11px; padding-bottom: 11px;}
+.stock-table-contents p, .stock-table-contents div {font-size: 0.938em; color: #90949c;}
+.stock-table-contents p a {margin-left: 5px; cursor: pointer;}
+.stock-table-contents p:first-child {font-weight: 500; color: #000;}
+.stock-table-contents p:last-child {padding-left: 0;}
+/* 투자위험 탭  */
+.risk-contents {margin: 24 0px; font-size: 0.875em;}
+.risk-contents p {font-size: 1.214em;}
+.risk-contents dl dt {margin: 24px 0 8px; font-size: 1.214em;}
+.risk-contents dl dt span {color: #e64a19; margin-right: 5px;}
+.risk-contents dl dd {font-size: 1.071em;}
+.risk-contents blockquote {border: 1px solid #e64a19; margin-top: 10px; padding: 16px; font-weight: bolder; font-size: 0.765em;}
+.notify {border: 1px solid #e4e4e4; padding: 30px;}
+.notify .risk-subject {text-align: center; margin: 26px 0 30px; font-size: 0.765em;}
+.notify p {margin: 0 0 30px;}
+.notify ol > li {margin: 0 0 20px; padding: 0 0 0 16px; list-style: decimal; font-size: 1.071em;}
+.notify li ul {padding-top: 10px;}
+.notify li ul li {list-style: square;}
+/* 새소식 탭 */
+
+/* 투자자 탭 */
+.investor-chart > div:first-child {width: 200px; margin: 0 auto;}
+.investor-chart > div:last-child {text-align: center; font-size: 0.938em;}
+.investor-contents .investor-list li {padding: 13px 0; line-height: 18px; box-shadow: inset 0 -1px rgba(0,0,0,.06); box-sizing: border-box;}
+
+
 /* ------- 푸터 ------- */
-.footer {
+footer {background: #ffdab3; color: #000;}
+/* .footer {
     width: 100%;
     float: left;
     background: #f4f4f4;
@@ -90,4 +180,4 @@ ul.social-media li a i:hover {
     text-align: center;
     color: #787878;
     letter-spacing: 1.5pt;
-}
+} */

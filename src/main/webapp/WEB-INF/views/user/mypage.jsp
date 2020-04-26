@@ -110,7 +110,7 @@
 		  			<p class="tier">쿠폰</p>
 		  			<c:choose>
 		  				<c:when test="${dto.coupon_chk == 0}">
-		  					<span class="second-tier">쿠폰이 없습니다.</span>
+		  					<p><span class="second-tier">쿠폰이 없습니다.</span></p>
 		  					<a href="${path}/coupon/coupon_box.do">쿠폰 이벤트 확인</a>
 		  				</c:when>
 		  				<c:otherwise>
