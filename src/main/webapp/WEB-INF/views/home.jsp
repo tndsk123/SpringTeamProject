@@ -21,7 +21,10 @@
 </head>
 <body>
 <%@ include file="include/frame/site-header.jsp"%>
+<<<<<<< HEAD
 <%@ include file="include/frame/main_slider.jsp"%>
+=======
+>>>>>>> refs/remotes/origin/master
 	<section class="container-fluid">
 		<div id="carousel" class="owl-carousel owl-theme">
 			<div class="item">
@@ -52,7 +55,11 @@
 									</div>
 									<div>
 										<p>${row.title}</p>
+<<<<<<< HEAD
 										<p><span class="percentage">${row.progress}%</span>${row.s_division}</p>
+=======
+										<p><span>${row.progress}%</span>${row.s_division}</p>
+>>>>>>> refs/remotes/origin/master
 									</div>
 								</article>
 							</a>
@@ -64,7 +71,11 @@
 					<div class="mainpage-subject">
 						<h3>실시간 랭킹</h3>
 					</div>
+<<<<<<< HEAD
 					<ul class="nav nav-tabs lank-tabs" role="tablist">
+=======
+					<ul class="nav nav-tabs" role="tablist">
+>>>>>>> refs/remotes/origin/master
 						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#stock">주식</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#bond">채권</a></li>
 					</ul>
@@ -73,11 +84,20 @@
 						 <c:forEach var="row" items="${good_list}" begin="0" end="4"  varStatus="vs">
 							<div class="lank">
 								<a href="${path}/fund/view/${row.bno}">
+<<<<<<< HEAD
 									<div class="row align-items-center">
 											<div class="col-2 col-md-2 col-lg-2 text-center">${vs.count}</div>
 											<div class="col-7 col-md-8 col-lg-7 lank-contents">
 												<p>${row.title}[${row.project_name}]</p>
 												<p><span class="percentage">${row.progress}%</span>주식</p>
+=======
+									<article>
+										<div class="row">
+											<div class="col-2 col-md-2 col-lg-2 text-center">1</div>
+											<div class="col-7 col-md-8 col-lg-7 section-contents">
+												<p>${row.title}[${row.project_name}]</p>
+												<p><span>${row.progress}%</span>주식</p>
+>>>>>>> refs/remotes/origin/master
 											</div>
 											<div class="col-3 col-md-2 col-lg-3 lank-thumb">
 												<img src="${path}/img/${row.title_img}">
@@ -91,11 +111,20 @@
 						 <c:forEach var="row" items="${good_list}" begin="0" end="4" varStatus="vs">
 							<div class="lank">
 								<a href="${path}/fund/view/${row.bno}">
+<<<<<<< HEAD
 									<div class="row align-items-center">	
 											<div class="col-2 col-md-2 col-lg-2 text-center">${vs.count}</div>
 											<div class="col-7 col-md-8 col-lg-7 lank-contents">
 												<p>${row.title}[${row.project_name}]</p>
 												<p><span class="percentage">${row.progress}%</span>주식</p>
+=======
+									<article>
+										<div class="row">
+											<div class="col-2 col-md-2 col-lg-2 text-center">1</div>
+											<div class="col-7 col-md-8 col-lg-7 section-contents">
+												<p>${row.title}[${row.project_name}]</p>
+												<p><span>${row.progress}%</span>주식</p>
+>>>>>>> refs/remotes/origin/master
 											</div>
 											<div class="col-3 col-md-2 col-lg-3 lank-thumb">
 												<img src="${path}/img/${row.title_img}">
@@ -111,6 +140,7 @@
 		</div>
 	</section>
 	<section class="container today-open">
+<<<<<<< HEAD
 			<div class="d-flex justify-content-between mainpage-subject">
 				<h3>
 					주목하세요!<br>#오늘 오픈한 프로젝트
@@ -118,6 +148,12 @@
 				<div>
 					<a href="#">&lt;12345&gt;</a>
 				</div>
+=======
+		<div class="container">
+			<div class="d-flex justify-content-between mainpage-subject">
+				<h3>주목하세요!<br>#오늘 오픈한 프로젝트</br></h3>
+				<div><a href="#">&lt;12345&gt;</a></div>
+>>>>>>> refs/remotes/origin/master
 			</div>
 			<div class="row to-contents">
 			 <c:forEach var="row" items="${support_list}" begin="0" end="5">
@@ -127,7 +163,11 @@
 							<img src="${path}/img/${row.title_img}">
 							<div class="to-overlay">
 								<div class="to-item">
+<<<<<<< HEAD
 									<p>[${row.progress}%]${row.title}<p>
+=======
+									<h4>[${row.progress}%]${row.title}</h4>
+>>>>>>> refs/remotes/origin/master
 									<small>${row.progress}% ${row.s_division}</small>
 								</div>
 							</div>

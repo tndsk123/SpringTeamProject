@@ -4,6 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<<<<<<< HEAD
+=======
+<meta name="keywords" content="invest, funding, company, crowdfunding">
+<meta name="description" content="INVEST FOR US">
+<meta name="robots" content="index">
+<!-- open graph -->
+<meta property="og:title" content="IFU" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.ifu.com" />
+<meta property="og:image" content="http://www.ifu.com/images/logo.png" />
+<meta property="og:description" content="INVEST FOR US">
+>>>>>>> refs/remotes/origin/master
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
