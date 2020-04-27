@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,800|Open+Sans:400,600,800&display=swap&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans|Nanum+Gothic|Noto+Sans+KR:400,700,900&display=swap');
 /* 여백 초기화 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -10,24 +10,42 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {display: block;}
-body {line-height: 1.2;}
+time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline;}
+/* 구형 브라우저 리셋 */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
 /* 블릿기호 초기화 */
 ul, li, ol {list-style: none;}
 /* a 링크 초기화 */
-a {color: #222; text-decoration: none;}
+a, a:hover {color: #000; text-decoration: none;}
 /* 폰트 초기화 */
-body, input, textarea, select, button, table {font-family: 'Nanum Gothic', 'Open Sans', AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, '돋움', sans-serif; color: #222; font-size: 13px; line-height: 1.5;}
+body, input, textarea, select, button, table {font-family: 'Noto Sans KR', 'Nanum Gothic', 'Black Han Sans', 'Open Sans', AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, '돋움', sans-serif; color: #000;}
+/* 폰트 스케일 */
+html, body {font-size: 14px !important;}
+h1 {font-size: 1.602em;}
+h2 {font-size: 1.424em;}
+h3 {font-size: 1.266em;}
+h4 {font-size: 1.125em;}
+h5 {font-size: 0.889em;}
+h6 {font-size: 0.79em;}
+.display-1 {font-size: 3.906em;}
+.display-2 {font-size: 3.125em;}
+.display-3 {font-size: 2.5em;}
+.display-4 {font-size: 2em;}
+/* Medium devices (tablets, 48em and up) */
+@media (min-width: 48em) {
+	h1 {font-size: 2.441em;}
+	h2 {font-size: 1.953em;}
+	h3 {font-size: 1.563em;}
+	h4 {font-size: 1.25em;}
+	.display-1 {font-size: 6em;}
+	.display-2 {font-size: 5.5em;}
+	.display-3 {font-size: 4.5em;}
+	.display-4 {font-size: 3.5em;}
+}
+/* large devices (large desktops, 75em and up) */
+@media (min-width: 75em) {
+	html,	body {font-size: 16px !important;}
+}

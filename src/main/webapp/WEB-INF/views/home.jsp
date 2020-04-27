@@ -21,28 +21,26 @@
 </head>
 <body>
 <%@ include file="include/frame/site-header.jsp"%>
-<section class="container">
-		<h1>heding</h1>
+<%@ include file="include/frame/main_slider.jsp"%>
+	<section class="container-fluid">
+		<div id="carousel" class="owl-carousel owl-theme">
+			<div class="item">
+				<img src="http://placehold.it/2000x400/a21010/ffffff" alt="orange tree" />
+			</div>
+			<div class="item">
+				<img src="http://placehold.it/2000x400/1096a2/ffffff" alt="orange tree" />
+			</div>
+			<div class="item">
+				<img src="http://placehold.it/2000x400/a28c10/ffffff" alt="orange tree" />
+			</div>
+		</div>
 	</section>
-	<section class="container">
-		<h1>heding</h1>
-	</section>
-	<section class="container">
-		<h1>heding</h1>
-	</section>
-	<section class="container">
-		<h1>heding</h1>
-	</section>
-	<section class="container">
-		<h1>heding</h1>
-	</section>
-	<section class="hot-project">
+	<section class="container hot-project">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-7 col-md-12">
-					<div>
-						<!-- 조회순 -->
-						<h1>이 프로젝트 어때요?</h1>
+					<div class="mainpage-subject">
+						<h3>이 프로젝트 어때요?</h3>
 					</div>
 					<div class="row">
 					 <c:forEach var="row" items="${cnt_list}" begin="0" end="4">
@@ -50,11 +48,11 @@
 							<a href="${path}/fund/view/${row.bno}">
 								<article>
 									<div class="how-project-thumb">
-										<img class="img-fluid" src="${path}/img/${row.title_img}">
+										<img src="${path}/img/${row.title_img}">
 									</div>
 									<div>
-										<h1>${row.title}</h1>
-										<p><span>${row.progress}%</span>${row.s_division}</p>
+										<p>${row.title}</p>
+										<p><span class="percentage">${row.progress}%</span>${row.s_division}</p>
 									</div>
 								</article>
 							</a>
@@ -63,49 +61,46 @@
 					</div>
 				</div>
 				<div class="col-xl-5 col-md-12">
-					<!-- 좋아요 순 -->
-					<h1>실시간 랭킹</h1>
-					<ul class="nav nav-tabs" role="tablist">
+					<div class="mainpage-subject">
+						<h3>실시간 랭킹</h3>
+					</div>
+					<ul class="nav nav-tabs lank-tabs" role="tablist">
 						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#stock">주식</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#bond">채권</a></li>
 					</ul>
 					<div class="tab-content">
 						<div id="stock" class="container tab-pane active">
-						 <c:forEach var="row" items="${good_list}" begin="0" end="4">
+						 <c:forEach var="row" items="${good_list}" begin="0" end="4"  varStatus="vs">
 							<div class="lank">
 								<a href="${path}/fund/view/${row.bno}">
-									<article>
-										<div class="row">
-											<div class="col-2 col-md-2 col-lg-2 text-center">1</div>
-											<div class="col-7 col-md-8 col-lg-7 section-contents">
-												<h1>${row.title}[${row.project_name}]</h1>
-												<p><span>${row.progress}%</span>주식</p>
+									<div class="row align-items-center">
+											<div class="col-2 col-md-2 col-lg-2 text-center">${vs.count}</div>
+											<div class="col-7 col-md-8 col-lg-7 lank-contents">
+												<p>${row.title}[${row.project_name}]</p>
+												<p><span class="percentage">${row.progress}%</span>주식</p>
 											</div>
 											<div class="col-3 col-md-2 col-lg-3 lank-thumb">
-												<img src="${path}/img/${row.title_img}" class="mx-auto d-block">
+												<img src="${path}/img/${row.title_img}">
 											</div>
-										</div>
-									</article>
+									</div>
 								</a>
 							</div>								
 						 </c:forEach>
 						</div>
 						<div id="bond" class="container tab-pane fade">
-						 <c:forEach var="row" items="${good_list}" begin="0" end="4">
+						 <c:forEach var="row" items="${good_list}" begin="0" end="4" varStatus="vs">
 							<div class="lank">
 								<a href="${path}/fund/view/${row.bno}">
-									<article>
-										<div class="row">
-											<div class="col-2 col-md-2 col-lg-2 text-center">1</div>
-											<div class="col-7 col-md-8 col-lg-7 section-contents">
-												<h1>${row.title}[${row.project_name}]</h1>
-												<p><span>${row.progress}%</span>주식</p>
+									<div class="row align-items-center">	
+											<div class="col-2 col-md-2 col-lg-2 text-center">${vs.count}</div>
+											<div class="col-7 col-md-8 col-lg-7 lank-contents">
+												<p>${row.title}[${row.project_name}]</p>
+												<p><span class="percentage">${row.progress}%</span>주식</p>
 											</div>
 											<div class="col-3 col-md-2 col-lg-3 lank-thumb">
-												<img src="${path}/img/${row.title_img}" class="mx-auto d-block">
+												<img src="${path}/img/${row.title_img}">
 											</div>
-										</div>
-									</article>
+									</div>
 								</a>
 							</div>								
 						 </c:forEach>
@@ -115,21 +110,24 @@
 			</div>
 		</div>
 	</section>
-	<section class="today-open">
-		<div class="container">
-			<div>
-				<!-- support 많은순 -->
-				<h1>주목하세요!<em>#오늘 오픈한 프로젝트</em><span><a href="#">&lt;12345&gt;</a></span></h1>
+	<section class="container today-open">
+			<div class="d-flex justify-content-between mainpage-subject">
+				<h3>
+					주목하세요!<br>#오늘 오픈한 프로젝트
+				</h3>
+				<div>
+					<a href="#">&lt;12345&gt;</a>
+				</div>
 			</div>
-			<div class="row">
+			<div class="row to-contents">
 			 <c:forEach var="row" items="${support_list}" begin="0" end="5">
-				<div class="col-md-4 col-sm-6">
+				<div class="col-md-3 col-6">
 					<a href="${path}/fund/view/${row.bno}">
 						<div class="to-thumb">
-							<img src="${path}/img/${row.title_img}" class="img-fluid">
+							<img src="${path}/img/${row.title_img}">
 							<div class="to-overlay">
 								<div class="to-item">
-									<h3>[${row.progress}%]${row.title}</h3>
+									<p>[${row.progress}%]${row.title}<p>
 									<small>${row.progress}% ${row.s_division}</small>
 								</div>
 							</div>
@@ -168,8 +166,6 @@
     </c:forEach>   
   </div>
 </div>
-
-
 <h3>GoodList</h3>
 <div class="container">
   <div class="row">
@@ -188,8 +184,6 @@
     </c:forEach> 
   </div>
 </div>
-
-
 <h3>SupportList</h3>
 <div class="container">
   <div class="row">
@@ -208,7 +202,6 @@
     </c:forEach>
   </div>
 </div>
-
 <h3>TodayList</h3>
 <div class="container">
   <div class="row">

@@ -1,48 +1,300 @@
 @charset "UTF-8";
-/* ------- 공통 요소 ------- */
-img {max-width: 100%; height: auto; vertical-align: top;}
-section {margin: 25px 0;}
-.section-contents h1 {white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
-/* ------- 헤더 ------- */
-header .top_navigation {border-bottom: 1px solid #e6e8eb; padding: 22px 0; background: #fff;}
+/*-----------------------------------------------------------------------------------
+
+    Project Name: IFU 투자 웹 어플리케이션
+    Member : 백앤드 - 김영수, 변우영 │ 프론트앤드 - 이재천, 정준영
+    Hoping that only good things will happen to us
+
+-----------------------------------------------------------------------------------
+    
+    [컨텐츠]
+    
+    1. 템플릿 리셋 CSS (include/css/reset.css)
+    2. 메인 스타일 CSS (include/css/style.css)
+    3. 공통 요소 (Common Elements)
+    4. 공통 헤더 (Header)
+    5. 메인 페이지 (Main Page)
+    6. 투자 페이지 (Invest Page)
+    7. 프로젝트 오픈 신청 페이지 (Apply Project Page)
+    8. 회사소개 페이지 (Company Introduction Page)
+    9. 로그인 페이지 (Login Page)
+    10. 회원가입 페이지 (Sign Up Page)
+    11. 공통 푸터 (Footer)
+    
+-----------------------------------------------------------------------------------*/
+
+/* ------- 3. 공통 요소 (Common Elements) ------- */
+/* 폰트  */
+h1, h2, h3 {font-weight: 900;}
+h5 {font-weight: 600;}
+/* 이미지 태그 반응형  */
+img {width: 100%; height: auto; vertical-align: top; display: block; margin: 0 auto;}
+/* 섹션 아티클 패딩 값  */
+section {padding: 30px 0;} /* 각 페이지 섹션 Top, Bottom 간격  */
+article {Padding: 15px 0;} /* 각 페이지 섹션 안에 박스 Top, Bottom 간격  */
+.container-fluid {padding: 0;}
+/* owl 캐러셀 */
+.owl-carousel {position: relative;}
+.owl-prev span, .owl-next span {color: #fff;}
+.owl-prev span:hover, .owl-next span:hover {color: #8199A3;}
+.owl-prev, .owl-next {position: absolute; top: 50%; transfrom: translateY(-50%);}
+.owl-prev {left: 30px;}
+.owl-next {right: 30px;}
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {color: #fff; font-size: 17px;}
+/* 커스텀 버튼  */
+.arrow-btn {border-radius: 4px; background-color:#ff9900; border: none; padding: 20px; width: 250px; line-height: 42px; transition: all 0.5s;}
+.arrow-btn span {cursor: pointer; display: inline-block; position: relative; transition: 0.5s;}
+.arrow-btn span:after {content: '»'; position: absolute; opacity: 0; top: 0; right: -20px; transition: 0.5s;}
+.arrow-btn:hover span {padding-right: 25px;}
+.arrow-btn:hover span:after {opacity: 1; right: 0;}
+
+
+.percentage {font-family: 'Nanum Gothic', sans-serif; font-weight: 700; color: #e64a19; margin-right: 6px;}
+.new {font-family: 'Nanum Gothic', sans-serif; font-weight: 700; color: #e64a19; box-shadow: 0 1px 1px rgba(0,0,0,.1);}
+.progress, .progress-bar {height: 3px;}
+/* 컨텐츠 제목  */
+.section-contents h5 {white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+
+/* ------- 4. 공통 헤더 (Header) ------- */
+header .top_navigation {background: #f9f8f7; border-bottom: 1px solid #ebebeb; padding: 22px 0;}
 .contact_list, .social_list {padding: 0 15px;}
-.contact_list li {padding: 0 5px; font-size: 12px;}
+.contact_list li {padding: 0 5px; font-size: 0.875em; font-weight: bold;}
 .contact_list li a:hover {color: #ff9900;}
 .contact_list li span {margin-right: 10px;}
-.contact_list li span:first-child {font-size: 16px; line-height: 16px; color: #563540;}
+.contact_list li span:first-child {font-size: 1em;}
 .social_list li {padding: 0 5px;}
-.social_list li a {font-size: 14px;}
+.social_list li a {font-size: 0.875em;}
 .social_list li a:hover {color: #ff9900;}
-/* ------- 메뉴 ------- */
+/* 메뉴 (navbar) */
 @media screen and (max-width: 425px) {.top_navigation {display: none;}}
-/* #header-sroll {position: fixed; height: 100px; background: #ccc; left: 0; top: 0; width: 100%; -ms-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out;} */
-.sticky.is-sticky {position: fixed; left: 0; right: 0; top: 0; z-index: 1000; width: 100%;}
-.navbar-default {background: #fff; border-bottom: 1px solid #e6e8eb; box-shadow: 0 5px 5px rgba(0,0,0,.1);}
+.sticky.is-sticky {position: fixed; left: 0; right: 0; top: 0; z-index: 1000; -ms-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out;}
+.navbar-default {background: #f9f8f7; border-bottom: 1px solid #ebebeb; box-shadow: 0 5px 5px rgba(0,0,0,.1);}
 .navbar-default .navbar-collapse {border-color: transparent;}
 .navbar-default .navbar-brand .fa {color: #000; font-size: 42px;}
-.navbar-default .navbar-nav li a {color: #777; font-size: 16px; letter-spacing: 1px; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; padding-right: 22px; padding-left: 22px;}
-.navbar-default .navbar-nav > li a:hover {color: #333 !important;}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {color: #777; background-color: transparent;}
-.navbar-default .navbar-nav li a:hover,
-.navbar-default .navbar-nav .active > a {color: #333;}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {color: #333; background-color: transparent;}
+.navbar-default .navbar-nav li a {font-size: 1.188em; font-weight: 700; letter-spacing: 1px; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out;}
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav > .active > a:hover {color: #ff9900;}
 .navbar-default .navbar-toggler {border: none;}
-.navbar-default .navbar-toggler:hover,
-.navbar-default .navbar-toggler:focus {background-color: transparent;}
+.navbar-default .navbar-toggler:hover {background-color: transparent;}
 .custom-toggler .navbar-toggler-icon {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(51, 51, 51)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");}
-/* ------- 컨텐츠 ------- */
-.lank {margin: 15px 0; border-bottom: 1px solid #e6e8eb;}
-.today-open small {color: #f0f0f0; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
-.today-open .to-thumb {position: relative; padding: 0; margin-top: 32px;}
-.today-open .to-thumb .to-overlay {position: absolute; background: #222; color: #ffffff; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; text-align: center; vertical-align: top; opacity: 0; transition: all 0.4s ease-in-out;}
-.today-open .to-item {position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
-.today-open .to-thumb:hover .to-overlay {opacity: 0.9;}
-.today-open .text-center {padding-top: 62px;}
-/* ------- 푸터 ------- */
-.footer {
+
+/* ------- 5. 메인 페이지 (Main Page) ------- */
+/* 메인 캐러셀 */
+#mainSlide .item .main-slide-thum img {max-height: 400px; filter: brightness(50%) drop-shadow(5px 5px 5px #000);}
+#mainSlide .item .main-slide-thum div:first-child {
+	background: #0F2027;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #0F2027, #2C5364);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #0F2027, #2C5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#mainSlide .item .main-slide-thum div:last-child {
+	background: #0F2027;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #0F2027, #2C5364);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0F2027, #2C5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+@media screen and (max-width: 768px) {#mainSlide .item .main-slide-thum div:nth-child(2) {width: 100%;}}
+#mainSlide .item .main-slide-contents {position: absolute; left: 10%; bottom: 50px; color: #fff; font-weight: 900;}
+#mainSlide .item .main-slide-contents p:first-child {font-size: 12px;}
+#mainSlide .item .main-slide-contents .title {font-size: 2em;}
+#mainSlide .item .main-slide-contents p:last-child {font-size: 0.813em;}
+/* 이 프로젝트 어때요? */
+.how-project-thumb {padding: 15px 0;}
+.how-project-thumb img {height: 170px;}
+.how-project-summary p:first-child {margin-bottom: 3px; font-size: 0.938em;}
+.how-project-summary p:last-child {font-size: 0.813em;}
+/* 실시간 랭킹  */
+.lank-tabs {padding: 15px 0;}
+.lank {padding: 10px 0; border-bottom: 1px solid #ebebeb;}
+.lank .lank-thumb img {max-height: 120px;}
+.lank-contents p:first-child {margin-bottom: 3px; font-size: 0.938em;}
+.lank-contents p:last-child {font-size: 0.813em;}
+/* 오늘 오픈한 프로젝트  */
+.to-contents .to-thumb {position: relative; padding: 15px 0;}
+.today-open .to-overlay {position: absolute; background: #222; color: #f2f2f2; top: 15px; left: 0; right: 0; bottom: 15px; width: 100%; text-align: center; opacity: 0; transition: all 0.4s ease-in-out;}
+.today-open .to-item {position: absolute; bottom: 15%; font-size: 0.938em; padding: 0 5px;}
+.today-open small {color: #f0f0f0; font-size: 10px; letter-spacing: 1px;}
+.today-open .to-contents a:hover .to-overlay {opacity: 0.9;}
+
+/* ------- 6. 투자 페이지 (Invest Page) ------- */
+/* 공통 요소  */
+.more {color: #fff; border-radius: 4px;	background-color: #ff9900; padding: 5px 5px; vertical-align: middle; letter-spacing: 0; font-weight: 700; box-sizing: border-box; transition: all 0.5s;}
+.more:hover {background-color: #387894;}
+.state  {
+	display: inline-block;
+	margin-top: -1px;
+	margin-right: 4px;
+	border-radius: 4px;
+	background-color: #ff9900;
+	padding: 0 4px;
+	height: 18px;
+	vertical-align: middle;
+	line-height: 18px;
+	letter-spacing: 0;
+	color: #fff !important;
+	font-size: 10px;
+	font-weight: 500;
+	box-sizing: border-box;
+}
+.category, .sub-category {margin: 0; color: #1d2129; font-weight: 700; font-size: 12px;}
+.category:after, .company:after {display: inline-block; margin: 0 4px; overflow: hidden; vertical-align: middle; color: #e6eaed; content: "|";}
+.plan {
+	display: inline-block;
+	margin-right: 8px;
+	border: 1px solid #90949c;
+	border-radius: 1em;
+	padding: 0 4px;
+	height: 18px;
+	vertical-align: middle;
+	white-space: nowrap;
+	font-size: 10px;
+	font-weight: 500;
+	box-sizing: border-box;
+  color: #90949c!important;
+}
+.sum {color: #90949c; font-size: 12px; font-weight: 500;}
+.company, .date {font-size: 12px; color: #90949c; letter-spacing: 0; font-weight: 700;}
+.subject {margin-bottom: 24px;}
+.summary {font-size: 1.063em; font-weight: 700;}
+.contents {border-top: 1px solid #e6eaed;}
+.contents > div {padding: 5px 15px; margin-top: 5px;}
+.search-menu img {width: 70px; height: 70px; filter: brightness(70%)}
+.search-menu span {display: block; text-align: center; margin-top: 8px; font-size: 0.813em; font-weight: 700; color: rgba(0,0,0,.84);}
+@media screen and (max-width: 375px) {.search-menu .menu {padding: 10px;}}
+/* 서브 네비게이션  */
+.invest-nav {background-color: #fafbfc; box-shadow: 0 1px 0 0 rgba(0,0,0,.1);}
+.invest-nav ul li a {letter-spacing: 0.15em; font-size: 1.063em; font-weight: 900; color: rgba(0,0,0,.84); line-height: 48px; background-image: linear-gradient(180deg, transparent 70%, #ff9900 0); background-repeat: no-repeat; background-size: 0 100%; transition: background-size .4s ease;}
+.invest-nav ul li a:hover {background-size: 100% 80%;}
+/* 투자 홈  */
+/* 인기 프로젝트  */
+.hot-project .contents img {max-height: 180px; }
+/* 오픈예정  */
+.comming-soon .contents img {max-height: 180px;}
+.comming-soon .contents .summary P:nth-child(2) {color: #387894;}
+.comming-soon .contents .summary p:last-child {font-size: 12px; color: #90949c; letter-spacing: 0;}
+/* 주식  */
+.stock .contents img {max-height: 180px;}
+/* 채권  */
+.bond .contents img {max-height: 180px;}
+/* 주식 메뉴  */
+.stock-subject h2 {margin-bottom: 8px;}
+.stock-subject p {font-size: 1.063em; color: rgba(0,0,0,.84);}
+.hot-stock-project .contents img {max-height: 180px;}
+/* 채권 메뉴  */
+.bond-subject h2 {margin-bottom: 8px;}
+.bond-subject p {font-size: 1.063em; color: rgba(0,0,0,.84);}
+.hot-bond-project .contents img {max-height: 180px;}
+/* 주식 상품 상세 페이지  */
+.product-details div .pd-view {box-shadow: 0 5px 5px rgba(0,0,0,.1); border-bottom: 1px solid #bf815e;}
+.stock-btn {display: block; float: left; margin-right: 8px; margin-left: -8px; background: #006666; padding: 0 8px; color: #f2f2f2; font-weight: 500; font-style: normal;}
+.swiper-container {width: 100%;}
+.swiper-slide {display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center;}
+.product-details-content {border-top: 3px solid #22252b;}
+.pd-share {margin-top: 20px;}
+.pd-share button {background-color: transparent; border: 1px solid #b6b6b6; border-radius: 50%; color: #777; width: 31px; height: 31px; line-height: 29px; margin-right: 11px; margin-top: 5px; text-align: center;}
+.pd-share button:hover {background-color: #21242c; border: 1px solid #21242c; color: #f2f2f2;}
+.pd-categories {margin-top: 20px;}
+.pd-categories li {display: inline-block; margin-right: 10px;}
+.pd-categories li a {color: #666; text-transform: capitalize;}
+.pd-categories li a:hover {color: #f3a395;}
+/* 회사 네임카드  */
+
+/* 투자 상세 중간 탭 네비게이션  */
+.classic-tabs .nav {position: relative; overflow-x: auto; white-space: nowrap;}
+.classic-tabs .nav li a {display: block; padding: 10px 15px; font-size: 1.063em; text-align: center; text-transform: uppercase; border-radius: 0;}
+.tab-content section > div {margin:24px 0;}
+/* 핵심정보 탭  */
+.ex-contents {margin-top: 24px; font-size: 1.063em;}
+.stock-table-contents {border-bottom: 1px solid #f0f2f5; padding-top: 11px; padding-bottom: 11px;}
+.stock-table-contents p, .stock-table-contents div {font-size: 0.938em; color: #90949c;}
+.stock-table-contents p a {margin-left: 5px; cursor: pointer;}
+.stock-table-contents p:first-child {font-weight: 500; color: #000;}
+.stock-table-contents p:last-child {padding-left: 0;}
+/* 투자위험 탭  */
+.risk-contents {margin: 24 0px; font-size: 0.875em;}
+.risk-contents > div {border-top: 1px solid #f0f2f5;}
+.risk-contents > div:nth-child(3) {border-bottom: 1px solid #f0f2f5;}
+.risk-contents p {font-size: 1.214em;}
+.risk-contents dl dt {margin: 24px 0 8px; font-size: 1.214em;}
+.risk-contents dl dt span {color: #e64a19; margin-right: 5px;}
+.risk-contents dl dd {font-size: 1.071em;}
+.risk-contents blockquote {border: 1px solid #e64a19; margin-top: 10px; padding: 16px; font-weight: bolder; font-size: 0.765em;}
+.notify {border: 1px solid #e4e4e4; padding: 30px;}
+.notify .risk-subject {text-align: center; margin: 26px 0 30px; font-size: 0.765em;}
+.notify p {margin: 0 0 30px;}
+.notify ol > li {margin: 0 0 20px; padding: 0 0 0 16px; list-style: decimal; font-size: 1.071em;}
+.notify li ul {padding-top: 10px;}
+.notify li ul li {list-style: square;}
+/* 새소식 탭 */
+
+/* 투자자 탭 */
+.investor-chart > div:first-child {width: 200px; margin: 0 auto;}
+.investor-chart > div:last-child {text-align: center; font-size: 0.938em;}
+.investor-contents .investor-list img {width: 70px; height: 70px;}
+.investor-contents .investor-list li {padding: 13px 0; line-height: 18px; box-shadow: inset 0 -1px rgba(0,0,0,.06); box-sizing: border-box;}
+
+/* ------- 7. 프로젝트 오픈 신청 페이지 (Apply Project Page) ------- */
+/* 폰트  */
+.desc {color: rgba(0,0,0,.84); letter-spacing: -.02em;}
+/* 배너  */
+.banner {position: relative;}
+.banner .banner-thum img {height: 412px; filter: brightness(30%)}
+.banner .banner-inner {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;}
+.banner .banner-inner .summary {padding: 0 0 8px; font-size: 1.188em; color: #ff9900; font-weight: 700;}
+.banner .banner-inner .title {padding: 0 0 40px; color: #fff;}
+.banner .banner-inner .banner-btn {padding: 0 32px;}
+.banner .banner-inner .banner-btn span {font-size: 1.313em; color: #fff; font-weight: 700;}
+.banner .banner-inner .desc {margin: 14px 0 0; color: rgba(255, 255, 255, 0.68); font-size: 0.813em;}
+/* 왜 IFU 일까요? */
+.why-ifu {padding: 2.5em 1em; background-color: #f5f7fa;}
+.why-ifu .contents .title {padding: 1.250em 0 0; margin: 0 0 32px;}
+.why-ifu img {width: 70px; height: 70px;}
+.why-ifu .contents .card {padding: 20px; border-radius: 30px;}
+.why-ifu .contents .card2, .why-ifu .contents .card3 {margin: 0 0 0 32px;}
+@media screen and (max-width: 990px) {.why-ifu .contents .card2, .why-ifu .contents .card3 {margin: 10px auto;}}
+.why-ifu .contents .card strong {margin: 0 0 14px; font-size: 1.063em;}
+.why-ifu .contents .card > div p {padding: 5px; font-size: 0.938em;}
+.why-ifu .contents .card > div p em {font-size: 12px; color: rgba(0,0,0,.54); line-height: 16px;}
+/* 배너2 */
+.second-banner {position: relative; overflow: hidden;}
+.second-banner img {height: 400px; filter: brightness(30%);}
+.second-banner .investors {position: absolute; top: 0; right: 0; bottom: 0; left: 0; text-align: center;}
+.second-banner .investors .title {padding: 0 0 16px; color: #fff;}
+.second-banner .investors .desc {padding: 0 0 20px; color: rgba(255, 255, 255, 0.68); font-size: 0.938em;}
+.second-banner .investors .num-list div {padding: 10px 0;}
+.second-banner .investors .num-list div p {padding: 0 0 5px; font-size: 1.313em; color: #fff; font-weight: 500;}
+.second-banner .investors .num-list div span {display: block; font-size: 0.813em; color: rgba(255, 255, 255, 0.68);}
+/* 누가 투자 받을 수 있나요? */
+.condition .title {padding: 0 0 8px;}
+.condition .desc {font-size: 0.938em; font-weight: 600;}
+.condition .condition-slider {margin-top: 32px;}
+.condition .item {padding: 0 10px;}
+.condition .item img {height: 200px;}
+.condition .item .card {padding: 24px; margin: 15px 0; border-radius: 50px; height: 230px; box-shadow: 0 7px 12px 0 rgba(0,0,0,.15);}
+.condition .item .card .icon1 {color: #303F9F;}
+.condition .item .card .icon2 {color: #FF4081;}
+.condition .item .card .icon3 {color: #FFEB3B;}
+.condition .item .card > div {margin-top: 10px;}
+.condition .item .card > div strong {display: block; padding: 5px 0; font-size: 1.063em;}
+.condition .item .card > div p {font-size: 0.938em; color: #60656a; line-height: 20px;}
+@media screen and (max-width: 600px) {.condition .item .card {height: 190px;}}
+/* IFU 투자팀 */
+.ifu-team .title {padding: 0 0 8px;}
+.ifu-team .desc {font-size: 0.938em; font-weight: 600;}
+.ifu-team .team-slider {margin-top: 32px;}
+.ifu-team .card {margin: 15px 0; height: 380px; box-shadow: 0 7px 12px 0 rgba(0,0,0,.15);}
+.ifu-team .card img {height: 180px;}
+.ifu-team .card .card-body {text-align: center;}
+.ifu-team .card .card-body .word {font-size: 0.938em; color: rgba(0,0,0,.84); padding: 12px 0;}
+.ifu-team .card .card-body .info {font-size: 0.813em;}
+.ifu-team .card .card-body .info strong {display: block; padding: 3px 0;}
+/* 자주하는 질문 */
+.faq .title {padding: 0 0 24px; border-bottom: 3px solid #e6eaed;}
+.faq .faq-contents {font-weight: 700;}
+.faq .faq-contents .info-qna {font-size: 0.813em;}
+.faq .faq-contents .card {border: none;}
+.faq .faq-contents .card a {background-color: #fff; border: none;}
+.faq .faq-contents .card-body {border-top: 1px solid #e6eaed; background-color: #f5f7fa;}
+/* ------- 11. 공통 푸터 (Footer) ------- */
+footer {background: #ffdab3; color: #000;}
+/* .footer {
     width: 100%;
     float: left;
     background: #f4f4f4;
@@ -90,4 +342,4 @@ ul.social-media li a i:hover {
     text-align: center;
     color: #787878;
     letter-spacing: 1.5pt;
-}
+} */

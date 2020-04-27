@@ -4,8 +4,8 @@
 		<div class="container">
 			<div class="row">
 				<ul class="col-9 nav contact_list">
-					<li><span><i class="far fa-envelope"></i></span> <a href="mailto:info@ifu.com">info@ifu.com</a></li>
-					<li><span><i class="fas fa-phone"></i></span> <span>02-1234-5678</span></li>
+					<li><span><i class="far fa-envelope"></i></span> <a href="mailto:info@ifu.com">service@ifu.com</a></li>
+					<li><span><i class="fas fa-phone"></i></span> <span>1600-1774</span></li>
 				</ul>
 				<ul class="col-3 nav justify-content-end social_list">
 					<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -24,10 +24,9 @@
 			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="#">주식</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">채권</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">프로젝트 오픈신청</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">IFU</a></li>
+					<li class="nav-item"><a class="nav-link" href="${path}/fund/invest.do">투자하기</a></li>
+					<li class="nav-item"><a class="nav-link" href="${path}/fund/apply_project.do">프로젝트 오픈신청</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">IFU소개</a></li>
 					<c:choose>
 								<c:when test="${sessionScope.userid == null }">
 									 <li class="nav-item"><a class="nav-link" href="${path}/user/login.do">로그인</a></li>

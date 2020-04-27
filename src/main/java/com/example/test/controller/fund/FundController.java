@@ -23,6 +23,27 @@ public class FundController {
 	@Inject
 	FundService fundService;
 	
+	@RequestMapping("apply_project.do")
+	public String apply_project() {
+		return "project_write/apply_project";
+	}
+	@RequestMapping("invest.do")
+	public String invest_list() {
+		return "invest/invest_list";
+	}
+	@RequestMapping("bond_list.do")
+	public String bond_list() {
+		return "invest/bond/bond_list";
+	}
+	@RequestMapping("stock_list.do")
+	public String stock_list() {
+		return "invest/stock/stock_list";
+	}
+	@RequestMapping("comming_soon_list.do")
+	public String comming_soon_list() {
+		return "invest/commingsoon/comming_soon_list";
+	}
+	
 	@RequestMapping("view/{bno}")
 	public ModelAndView view(@PathVariable("bno") int bno, HttpSession session) throws Exception {
 		FundDTO dto=fundService.view(bno,session);
